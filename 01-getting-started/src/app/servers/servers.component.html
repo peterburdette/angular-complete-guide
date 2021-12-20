@@ -1,3 +1,8 @@
+<label>Server Name</label>
+<!-- '$event' is a reserved variable name that can be used within the template when using event binding to pass an argument to the method that is called -->
+<input type="text" class="form-control" (input)="onUpdateServerName($event)" />
+<p>{{ serverName }}</p>
+
 <!-- Square brackets indicate to Angular that there is property binding - this is used when you want to dynamically bind some property in the DOM to the TS/JS -->
 <!-- Parenthesis indicate event binding -->
 <button
