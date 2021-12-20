@@ -1,8 +1,17 @@
 <!-- Square brackets indicate to Angular that there is property binding - this is used when you want to dynamically bind some property in the DOM to the TS/JS -->
-<button class="btn btn-primary" [disabled]="!allowNewServer">Add Server</button>
+<!-- Parenthesis indicate event binding -->
+<button
+  class="btn btn-primary"
+  [disabled]="!allowNewServer"
+  (click)="onCreateServer()"
+>
+  Add Server
+</button>
 
 <!-- When should property binding vs. string interpolation be used? If you want to output something in the template (print some text to it) use string interpolation. If you want to change some property, be that of a HTML element or a directive or a component, use property binding. -->
 <p [innerText]="allowNewServer"></p>
 <p>{{ allowNewServer }}</p>
+
+<p>{{ serverCreationStatus }}</p>
 <app-server></app-server>
 <app-server></app-server>
