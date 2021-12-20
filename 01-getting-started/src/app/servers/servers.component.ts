@@ -26,4 +26,19 @@ export class ServersComponent implements OnInit {
   onUpdateServerName(event: any) {
     this.serverName = event.target.value;
   }
+
+  // Assignment code
+  username = '';
+  buttonActive = false;
+
+  activateButton(event) {
+    if (event.target.value.length > 0) {
+      this.buttonActive = true;
+    }
+  }
+
+  resetInput() {
+    this.username = '';
+    this.buttonActive = false;
+  }
 }
