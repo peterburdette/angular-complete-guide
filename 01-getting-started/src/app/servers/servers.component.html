@@ -17,11 +17,15 @@
 </button>
 
 <!-- When should property binding vs. string interpolation be used? If you want to output something in the template (print some text to it) use string interpolation. If you want to change some property, be that of a HTML element or a directive or a component, use property binding. -->
-<p [innerText]="allowNewServer"></p>
+<!-- <p [innerText]="allowNewServer"></p> -->
 <p>{{ allowNewServer }}</p>
 
-<p>{{ serverCreationStatus }}</p>
-<app-server></app-server>
+<!-- <p>{{ serverCreationStatus }}</p> -->
+
+<p *ngIf="serverCreated">
+  Server was created, server name is {{ serverName }}.
+</p>
+
 <app-server></app-server>
 
 <hr />
