@@ -27,7 +27,8 @@
 </p>
 <ng-template #noServer> No server was created. </ng-template>
 
-<app-server></app-server>
+<!-- The asterisk indicates a structural directive - structural directives change the DOM -->
+<app-server *ngFor="let server of servers"></app-server>
 
 <hr />
 
