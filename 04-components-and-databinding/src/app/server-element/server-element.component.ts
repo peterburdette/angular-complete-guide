@@ -6,6 +6,9 @@ import {
   SimpleChanges,
   DoCheck,
   AfterContentInit,
+  AfterContentChecked,
+  AfterViewInit,
+  AfterViewChecked,
 } from '@angular/core';
 
 @Component({
@@ -16,7 +19,14 @@ import {
 
 // it's good practice to include the lifecycle hooks that are implemented
 export class ServerElementComponent
-  implements OnInit, OnChanges, DoCheck, AfterContentInit
+  implements
+    OnInit,
+    OnChanges,
+    DoCheck,
+    AfterContentInit,
+    AfterContentChecked,
+    AfterViewInit,
+    AfterViewChecked
 {
   // using typescript to define the type, name and content that will get passed.
   // @Input() is a decorator function that allows the custom selector 'element' to be binded to in the child component (it essentially allows for the data that is passed to be received)
@@ -46,5 +56,20 @@ export class ServerElementComponent
   // this is executed after Angular has fully initialized all content of a directive
   ngAfterContentInit() {
     console.log('ngAfterContentInit called');
+  }
+
+  // this is executed after the default change detector has completed checking all content of a directive
+  ngAfterContentChecked() {
+    console.log('ngAfterContentChecked called');
+  }
+
+  // this is executed after Angular has fully initialized a component's view
+  ngAfterViewInit() {
+    console.log('ngAfterViewInit called');
+  }
+
+  // this is executed after the default change detector has completed checking a component's view for changes
+  ngAfterViewChecked() {
+    console.log('ngAfterViewChecked called');
   }
 }
