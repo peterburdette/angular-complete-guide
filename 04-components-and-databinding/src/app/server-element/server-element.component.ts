@@ -10,6 +10,9 @@ import {
   AfterViewInit,
   AfterViewChecked,
   OnDestroy,
+  ViewChild,
+  ElementRef,
+  ContentChild,
 } from '@angular/core';
 
 @Component({
@@ -35,6 +38,9 @@ export class ServerElementComponent
   // 'srvElement' is the property from the parent component that gets passed into @Input() which will create an alias. The 'element' can be used within the component instead of 'srvElement'.
   @Input('srvElement') element: { type: string; name: string; content: string };
   @Input() name: string;
+  @ViewChild('heading', { static: true }) header: ElementRef;
+  // this grants access to content that is store in another component and then passed on via ng-content.
+  @ContentChild('contentParagraph', { static: true }) paragraph: ElementRef;
 
   constructor() {
     console.log('constructor called');
@@ -48,6 +54,10 @@ export class ServerElementComponent
 
   ngOnInit() {
     console.log('ngOnInit called');
+    console.log('text content: ' + this.header.nativeElement.textContent);
+    console.log(
+      'text content of paragraph: ' + this.paragraph.nativeElement.textContent
+    );
   }
 
   // this is executed on every change detection run
@@ -68,6 +78,10 @@ export class ServerElementComponent
   // this is executed after Angular has fully initialized a component's view
   ngAfterViewInit() {
     console.log('ngAfterViewInit called');
+    console.log('text content: ' + this.header.nativeElement.textContent);
+    console.log(
+      'text content of paragraph: ' + this.paragraph.nativeElement.textContent
+    );
   }
 
   // this is executed after the default change detector has completed checking a component's view for changes
