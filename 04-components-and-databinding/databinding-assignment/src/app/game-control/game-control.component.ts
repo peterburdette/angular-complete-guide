@@ -15,7 +15,7 @@ export class GameControlComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onStartGame() {
+  handleStart() {
     this.interval = setInterval(() => {
       // .emit() Emits an event containing a given value.
       this.intervalFired.emit(this.lastNumber + 1);
@@ -23,7 +23,7 @@ export class GameControlComponent implements OnInit {
     }, 1000);
   }
 
-  onPauseGame() {
+  handlePause() {
     // passing this.interval will clear the interval - this.interval is the reference
     clearInterval(this.interval);
   }
