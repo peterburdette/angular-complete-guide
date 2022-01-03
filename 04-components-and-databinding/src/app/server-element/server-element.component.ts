@@ -9,6 +9,7 @@ import {
   AfterContentChecked,
   AfterViewInit,
   AfterViewChecked,
+  OnDestroy,
 } from '@angular/core';
 
 @Component({
@@ -26,7 +27,8 @@ export class ServerElementComponent
     AfterContentInit,
     AfterContentChecked,
     AfterViewInit,
-    AfterViewChecked
+    AfterViewChecked,
+    OnDestroy
 {
   // using typescript to define the type, name and content that will get passed.
   // @Input() is a decorator function that allows the custom selector 'element' to be binded to in the child component (it essentially allows for the data that is passed to be received)
@@ -71,5 +73,10 @@ export class ServerElementComponent
   // this is executed after the default change detector has completed checking a component's view for changes
   ngAfterViewChecked() {
     console.log('ngAfterViewChecked called');
+  }
+
+  // this is executed when a directive, pipe or service is destroyed
+  ngOnDestroy() {
+    console.log('ngOnDestroy called');
   }
 }
