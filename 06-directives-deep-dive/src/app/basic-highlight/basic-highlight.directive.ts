@@ -1,5 +1,6 @@
 import { Directive, ElementRef, OnInit } from "@angular/core";
 
+// this directive is not best practice
 // @Directive is a decorator
 @Directive({
   selector: "[appBasicHighlight]",
