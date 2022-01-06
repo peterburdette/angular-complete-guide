@@ -1,6 +1,7 @@
 import {
   Directive,
   ElementRef,
+  HostBinding,
   HostListener,
   OnInit,
   Renderer2,
@@ -12,6 +13,9 @@ import {
   selector: "[appBetterHighlight]",
 })
 export class BetterHighlightDirective implements OnInit {
+  // the property decorator @HostBinding() takes a string argument which defines which property of the hosting element we want to bind.
+  @HostBinding("style.backgroundColor") backgroundColor: string = "transparent";
+
   constructor(private elRef: ElementRef, private renderer: Renderer2) {}
 
   ngOnInit(): void {
@@ -21,18 +25,20 @@ export class BetterHighlightDirective implements OnInit {
 
   // @HostListener directive that takes one argument as a string and works in tandem with a method that will be executed. 'Mouseenter' and 'mouseleave' were chosen as args because they are events that are supported by DOM elements.
   @HostListener("mouseenter") mouseover(eventData: Event) {
-    this.renderer.setStyle(
-      this.elRef.nativeElement,
-      "background-color",
-      "blue"
-    );
+    // this.renderer.setStyle(
+    //   this.elRef.nativeElement,
+    //   "background-color",
+    //   "blue"
+    // );
+    this.backgroundColor = "blue";
   }
 
   @HostListener("mouseleave") mouseleave(eventData: Event) {
-    this.renderer.setStyle(
-      this.elRef.nativeElement,
-      "background-color",
-      "transparent"
-    );
+    // this.renderer.setStyle(
+    //   this.elRef.nativeElement,
+    //   "background-color",
+    //   "transparent"
+    // );
+    this.backgroundColor = "transparent";
   }
 }
