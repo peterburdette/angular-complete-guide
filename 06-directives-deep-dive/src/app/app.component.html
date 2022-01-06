@@ -1,3 +1,6 @@
+<!-- QUESTION: How do you decide when to use a directive or a component? -->
+<!-- ANSWER: Usually, directives are used when you need to have some sort of interaction on DOM, listen to events, change some DOM properties , or you need to create a functionality which is generic. Component is used when you need a template, its style, its logic all in one place. -->
+
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
@@ -55,6 +58,14 @@
       <p appBetterHighlight [defaultColor]="'yellow'" highlightColor="red">
         Style me with better highlight directive!
       </p>
+
+      <!-- ngSwitch may be useful in some cases where there might be a lot of ngIf conditions - similar to the JS switch statement -->
+      <div [ngSwitch]="value">
+        <p *ngSwitchCase="5">Value is 5</p>
+        <p *ngSwitchCase="10">Value is 10</p>
+        <p *ngSwitchCase="100">Value is 100</p>
+        <p *ngSwitchDefault>Value is Default</p>
+      </div>
     </div>
   </div>
 </div>
