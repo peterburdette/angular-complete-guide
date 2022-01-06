@@ -36,7 +36,10 @@
         <p>Only odd</p>
       </ng-template>
       <p appBasicHighlight>Style me with basic highlight directive!</p>
-      <p appBetterHighlight>Style me with better highlight directive!</p>
+      <!-- using 'defaultColor' and 'highlightColor' in this way are two ways of property binding -->
+      <p appBetterHighlight [defaultColor]="'yellow'" highlightColor="red">
+        Style me with better highlight directive!
+      </p>
     </div>
   </div>
 </div>
