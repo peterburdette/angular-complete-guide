@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { LoggingService } from "./logging.service";
 
-// @Injectable() is a decorator that marks a class as available to be provided and injected as a dependency.
+// @Injectable() is a decorator that marks a class as available to be provided and injected as a dependency. This should now be used within all services as per Angular best practices.
 @Injectable()
 export class AccountsService {
   accounts = [
