@@ -12,10 +12,12 @@ export class ActiveUsersComponent implements OnInit {
   constructor(private usersService: UsersService) {}
 
   ngOnInit(): void {
+    // on initilization set the active users to the users property
     this.users = this.usersService.activeUsers;
   }
 
   onSetToInactive(id: number) {
+    // calls the 'onSetToInactive' method inside of the usersService Service and passes the id
     this.usersService.onSetToInactive(id);
   }
 }
