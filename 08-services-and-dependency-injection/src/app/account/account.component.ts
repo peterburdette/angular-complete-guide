@@ -22,5 +22,8 @@ export class AccountComponent {
 
     // this.loggingService.logStatusChange(status);
     // console.log('A server status changed, new status: ' + status);
+
+    // this is using the 'statusUpdated' property in the 'accounts.service.ts' to make the status accessible for any component that wants to use it.
+    this.accountsService.statusUpdated.emit(status);
   }
 }

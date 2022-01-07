@@ -13,7 +13,12 @@ export class NewAccountComponent {
   constructor(
     private loggingService: LoggingService,
     private accountsService: AccountsService
-  ) {}
+  ) {
+    // this is subscribing to the update that is emitted from the 'account.component.ts' file and outputting an alert with the passed status
+    this.accountsService.statusUpdated.subscribe((status: string) =>
+      alert("New status: " + status)
+    );
+  }
 
   onCreateAccount(accountName: string, accountStatus: string) {
     this.accountsService.addAccount(accountName, accountStatus);
