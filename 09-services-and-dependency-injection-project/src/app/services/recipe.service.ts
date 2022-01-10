@@ -1,12 +1,12 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { Recipe } from '../recipes/recipe.model';
 import { Ingredient } from '../shared/ingredient.model';
+import { ShoppingListService } from './shopping-list.service';
 
 @Injectable()
 export class RecipeService {
   recipeSelected = new EventEmitter<Recipe>();
 
-  // the 'Recipe[]' indicates that we are using our model which contains the types of properties that will be used within this array.
   private recipes: Recipe[] = [
     new Recipe(
       'Tasty Schnitzel',
@@ -22,8 +22,13 @@ export class RecipeService {
     ),
   ];
 
+  constructor(private slService: ShoppingListService) {}
+
   getRecipes() {
-    // 'slice()' will cause this method to return a copy of the recipies array
     return this.recipes.slice();
+  }
+
+  addIngredientsToShoppingList(ingredients: Ingredient[]) {
+    this.slService.addIngredients(ingredients);
   }
 }

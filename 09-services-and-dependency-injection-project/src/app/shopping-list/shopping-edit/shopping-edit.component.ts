@@ -37,6 +37,6 @@ export class ShoppingEditComponent implements OnInit {
 
     // passes the 'newIngredient' variable so that it can be accessed outside of the component
     this.ingredientAdded.emit(newIngredient);
-    this.shoppingList.onAddIngredient(newIngredient);
+    this.shoppingList.addIngredient(newIngredient);
   }
 }
