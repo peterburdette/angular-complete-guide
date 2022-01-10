@@ -1,8 +1,10 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { Recipe } from '../recipes/recipe.model';
 
 @Injectable()
 export class RecipeService {
+  recipeSelected = new EventEmitter<Recipe>();
+
   // the 'Recipe[]' indicates that we are using our model which contains the types of properties that will be used within this array.
   private recipes: Recipe[] = [
     new Recipe(

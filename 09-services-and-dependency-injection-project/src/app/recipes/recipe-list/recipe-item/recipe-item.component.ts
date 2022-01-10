@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { RecipeService } from 'src/app/services/recipe.service';
 import { Recipe } from '../../recipe.model';
 
 @Component({
@@ -8,15 +9,12 @@ import { Recipe } from '../../recipe.model';
 })
 export class RecipeItemComponent implements OnInit {
   @Input() recipe: Recipe;
-  // setting the EventEmitter type to <void> because it's not passing any information because it contains no information
-  @Output() recipeSelected = new EventEmitter<void>();
 
-  constructor() {}
+  constructor(private recipeService: RecipeService) {}
 
   ngOnInit(): void {}
 
   onSelected() {
-    // nothing is passed using emit() because of the <void> type
-    this.recipeSelected.emit();
+    this.recipeService.recipeSelected.emit(this.recipe);
   }
 }
