@@ -7,6 +7,7 @@ import {
   EventEmitter,
 } from '@angular/core';
 import { Ingredient } from '../../shared/ingredient.model';
+import { ShoppingListService } from '../../services/shopping-list.service';
 
 @Component({
   selector: 'app-shopping-edit',
@@ -22,7 +23,7 @@ export class ShoppingEditComponent implements OnInit {
   // 'ingredientAdded' is what the parent component is binding to
   @Output() ingredientAdded = new EventEmitter<Ingredient>();
 
-  constructor() {}
+  constructor(private shoppingList: ShoppingListService) {}
 
   ngOnInit(): void {}
 
@@ -36,5 +37,6 @@ export class ShoppingEditComponent implements OnInit {
 
     // passes the 'newIngredient' variable so that it can be accessed outside of the component
     this.ingredientAdded.emit(newIngredient);
+    this.shoppingList.onAddIngredient(newIngredient);
   }
 }
