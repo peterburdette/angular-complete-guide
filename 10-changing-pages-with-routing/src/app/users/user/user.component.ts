@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Params } from "@angular/router";
 
 @Component({
   selector: "app-user",
@@ -20,5 +20,12 @@ export class UserComponent implements OnInit {
       id: this.route.snapshot.params["id"],
       name: this.route.snapshot.params["name"],
     };
+
+    // an observable (in this case it is 'params') is an easy way to subscribe to some event which might happen in the future, to then exectue some code when it happens without having to wait for it now
+    // the subscribe() method will fire whenever new data is sent through the observable (aka whenever the parameters change in this use case)
+    this.route.params.subscribe((params: Params) => {
+      this.user.id = params["id"];
+      this.user.name = params["name"];
+    });
   }
 }
