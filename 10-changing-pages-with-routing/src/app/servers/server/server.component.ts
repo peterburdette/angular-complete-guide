@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute, Params } from "@angular/router";
+import { ActivatedRoute, Params, Router } from "@angular/router";
+import { relative } from "path";
 
 import { ServersService } from "../servers.service";
 
@@ -13,7 +14,8 @@ export class ServerComponent implements OnInit {
 
   constructor(
     private serversService: ServersService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -21,6 +23,15 @@ export class ServerComponent implements OnInit {
     this.server = this.serversService.getServer(1);
     this.route.params.subscribe((params: Params) => {
       this.server = this.serversService.getServer(+params["id"]);
+    });
+  }
+
+  onEdit() {
+    // sets up a relative link for when the edit button is clicked
+    // queryParamsHandling takes a string as a value and allows the url to 'preserve' or 'merge' the old param values when directing to the new page instead of overwritting them
+    this.router.navigate(["edit"], {
+      relativeTo: this.route,
+      queryParamsHandling: "preserve",
     });
   }
 }
