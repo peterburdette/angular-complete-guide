@@ -18,6 +18,7 @@ const appRoutes: Routes = [
   // the colon (:) tells Angular that this is a dynamic part of the path
   { path: "users/:id/:name", component: UserComponent },
   { path: "servers", component: ServersComponent },
+  { path: "servers/:id", component: ServerComponent },
   { path: "servers/:id/edit", component: EditServerComponent },
 ];
 
