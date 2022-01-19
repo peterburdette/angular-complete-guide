@@ -55,6 +55,8 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
+  // useHash will add a # after the top level URL and this will inform the web server that we only care about the part in the URL before the hash. All other parts after it will be ignored by the web server. The part after the hash will be parsed by Angular. This approach should be used only if traditional routes don't work on a production server (if the server isn't configured correctly for Angular web apps).
+  // imports: [RouterModule.forRoot(appRoutes, { useHash: true })],
   imports: [RouterModule.forRoot(appRoutes)],
   exports: [RouterModule],
 })
