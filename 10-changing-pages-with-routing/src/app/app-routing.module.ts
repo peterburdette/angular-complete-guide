@@ -9,6 +9,7 @@ import { UserComponent } from "./users/user/user.component";
 import { UsersComponent } from "./users/users.component";
 import { AuthGuardService } from "./auth-guard.service";
 import { CanDeactivateGuard } from "./servers/edit-server/can-deactivate-guard.service";
+import { ErrorPageComponent } from "./error-page/error-page.component";
 
 const appRoutes: Routes = [
   // The path-match strategy 'full' matches against the entire URL. It is important to do this when redirecting empty-path routes. Otherwise, because an empty path is a prefix of any URL, the router would apply the redirect even when navigating to the redirect destination, creating an endless loop.
@@ -36,7 +37,13 @@ const appRoutes: Routes = [
       },
     ],
   },
-  { path: "not-found", component: PageNotFoundComponent },
+  // { path: "not-found", component: PageNotFoundComponent },
+  {
+    path: "not-found",
+    component: ErrorPageComponent,
+    // 'data' gets passed through the route snapshot (this.route.snapshot)
+    data: { message: "Page not found!" },
+  },
   // the double asterisk is a wildcard that tells Angular to catch all unfamiliar paths - this needs to be the last path in the list of paths as paths are parsed from top to bottom
   { path: "**", redirectTo: "not-found" },
 ];
