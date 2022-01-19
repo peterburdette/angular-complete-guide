@@ -10,6 +10,7 @@ import { UsersComponent } from "./users/users.component";
 import { AuthGuardService } from "./auth-guard.service";
 import { CanDeactivateGuard } from "./servers/edit-server/can-deactivate-guard.service";
 import { ErrorPageComponent } from "./error-page/error-page.component";
+import { ServerResolver } from "./servers/server/server-resolver.service";
 
 const appRoutes: Routes = [
   // The path-match strategy 'full' matches against the entire URL. It is important to do this when redirecting empty-path routes. Otherwise, because an empty path is a prefix of any URL, the router would apply the redirect even when navigating to the redirect destination, creating an endless loop.
@@ -29,7 +30,12 @@ const appRoutes: Routes = [
     canActivateChild: [AuthGuardService],
     component: ServersComponent,
     children: [
-      { path: ":id", component: ServerComponent },
+      // the data that gets retrieed before the page loads will be stored as an object withing 'server'
+      {
+        path: ":id",
+        component: ServerComponent,
+        resolve: { server: ServerResolver },
+      },
       {
         path: ":id/edit",
         component: EditServerComponent,
