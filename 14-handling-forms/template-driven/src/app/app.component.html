@@ -4,7 +4,8 @@
       <!-- 'ngSubmit' (a directive) takes advantage of HTML's default submission (when a submit button inside of a form is clicked) will fire an event whenever the form is submitted. -->
       <!-- The local reference '#data' gives access to the form element -->
       <!-- 'ngForm' is assigned to the '#data' reference to give access to the form data object -->
-      <form (ngSubmit)="onSubmit(data)" #data="ngForm">
+      <!-- <form (ngSubmit)="onSubmit(data)" #data="ngForm"> -->
+      <form (ngSubmit)="onSubmit()" #data="ngForm">
         <div id="user-data">
           <div class="form-group">
             <label for="username">Username</label>

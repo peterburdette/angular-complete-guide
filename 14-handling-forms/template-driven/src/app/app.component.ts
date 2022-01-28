@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, ViewChild } from "@angular/core";
 import { NgForm } from "@angular/forms";
 
 @Component({
@@ -7,11 +7,20 @@ import { NgForm } from "@angular/forms";
   styleUrls: ["./app.component.css"],
 })
 export class AppComponent {
+  // the form 'data' is being stored in 'signupForm'
+  @ViewChild("data") signupForm: NgForm;
+
   suggestUserName() {
     const suggestedName = "Superuser";
   }
 
-  onSubmit(formData: NgForm) {
-    console.log(formData.form.value);
+  // solution using onSubmit() with one argument being passed
+  // onSubmit(formData: NgForm) {
+  //   console.log(formData.form.value);
+  // }
+
+  // alternate way using @ViewChild
+  onSubmit() {
+    console.log(this.signupForm);
   }
 }
