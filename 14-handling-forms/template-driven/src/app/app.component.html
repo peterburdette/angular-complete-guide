@@ -34,7 +34,14 @@
               name="email"
               required
               email
+              #emailField="ngModel"
             />
+            <!-- adding ngModel to the input by adding a local reference ('#emailField') to the input element gives access to the control created by Angular -->
+            <span
+              class="help-block"
+              *ngIf="!emailField.valid && emailField.touched"
+              >Please enter a valid value!</span
+            >
           </div>
         </div>
         <div class="form-group">
