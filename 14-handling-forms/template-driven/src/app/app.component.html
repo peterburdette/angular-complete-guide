@@ -17,6 +17,7 @@
               class="form-control"
               ngModel
               name="username"
+              required
             />
           </div>
           <button class="btn btn-default" type="button">
@@ -24,12 +25,14 @@
           </button>
           <div class="form-group">
             <label for="email">Email</label>
+            <!-- 'email' is a directive made available by Angular which assists with checking to see if a user entry in a field is a valid email -->
             <input
               type="email"
               id="email"
               class="form-control"
               ngModel
               name="email"
+              email
             />
           </div>
         </div>
