@@ -22,5 +22,6 @@ export class AppComponent {
   // alternate way using @ViewChild
   onSubmit() {
     console.log(this.signupForm);
+    console.log(this.signupForm.form.value);
   }
 }

@@ -32,6 +32,7 @@
               class="form-control"
               ngModel
               name="email"
+              required
               email
             />
           </div>
@@ -43,7 +44,10 @@
             <option value="teacher">Your first teacher?</option>
           </select>
         </div>
-        <button class="btn btn-primary" type="submit">Submit</button>
+        <!-- utilizing the local reference for the form ('#data') to check and see if the form is valid - if not the submit button is disabled -->
+        <button class="btn btn-primary" type="submit" [disabled]="!data.valid">
+          Submit
+        </button>
       </form>
     </div>
   </div>
