@@ -6,6 +6,7 @@
       <!-- 'ngForm' is assigned to the '#data' reference to give access to the form data object -->
       <!-- <form (ngSubmit)="onSubmit(data)" #data="ngForm"> -->
       <form (ngSubmit)="onSubmit()" #data="ngForm">
+        <!-- ngModelGroup groups this form section's data into the 'userData' group which will show up inside of the form submission object -->
         <div id="user-data" ngModelGroup="userData" #userData="ngModelGroup">
           <div class="form-group">
             <label for="username">Username</label>
