@@ -5,6 +5,7 @@
       <!-- The local reference '#data' gives access to the form element -->
       <!-- 'ngForm' is assigned to the '#data' reference to give access to the form data object -->
       <!-- <form (ngSubmit)="onSubmit(data)" #data="ngForm"> -->
+      <!-- ngModel is used within the different inputs to register the values that are given so they show up in the form submission object -->
       <form (ngSubmit)="onSubmit()" #data="ngForm">
         <!-- ngModelGroup groups this form section's data into the 'userData' group which will show up inside of the form submission object -->
         <div id="user-data" ngModelGroup="userData" #userData="ngModelGroup">
@@ -69,6 +70,21 @@
           ></textarea>
         </div>
         <p>Your reply: {{ answer }}</p>
+
+        <!-- utilizing *ngFor to loop through the array of genders - ngModel is required so this field is registered in the form submission -->
+        <div class="radio" *ngFor="let gender of genders">
+          <label>
+            <input
+              type="radio"
+              name="gender"
+              ngModel
+              [value]="gender"
+              required
+            />
+            {{ gender }}
+          </label>
+        </div>
+
         <!-- utilizing the local reference for the form ('#data') to check and see if the form is valid - if not the submit button is disabled -->
         <button class="btn btn-primary" type="submit" [disabled]="!data.valid">
           Submit

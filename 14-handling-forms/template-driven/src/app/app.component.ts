@@ -9,6 +9,7 @@ import { NgForm } from "@angular/forms";
 export class AppComponent {
   defaultQuestion = "pet";
   answer: string;
+  genders = ["male", "female"];
 
   // the form 'data' is being stored in 'signupForm'
   @ViewChild("data") signupForm: NgForm;
