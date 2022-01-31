@@ -6,7 +6,7 @@
       <!-- 'ngForm' is assigned to the '#data' reference to give access to the form data object -->
       <!-- <form (ngSubmit)="onSubmit(data)" #data="ngForm"> -->
       <form (ngSubmit)="onSubmit()" #data="ngForm">
-        <div id="user-data">
+        <div id="user-data" ngModelGroup="userData" #userData="ngModelGroup">
           <div class="form-group">
             <label for="username">Username</label>
             <!-- 'ngModel' (a directive) without any brackets or parenthesis tells Angular that this is a form control. -->
@@ -44,6 +44,9 @@
             >
           </div>
         </div>
+        <span class="help-block" *ngIf="!userData.valid && userData.touched"
+          >User data is invalid!</span
+        >
         <div class="form-group">
           <label for="secret">Secret Questions</label>
           <select
