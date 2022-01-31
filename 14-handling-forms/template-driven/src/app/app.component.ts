@@ -62,5 +62,12 @@ export class AppComponent {
 
     // sets the form submitted property to true to show the results
     this.submitted = true;
+
+    // resets the form after submission - this will not only clear the fields but reset the state of the form as well
+    this.signupForm.reset();
+  }
+
+  onReset() {
+    this.signupForm.reset();
   }
 }
