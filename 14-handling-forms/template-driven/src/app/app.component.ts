@@ -7,6 +7,8 @@ import { NgForm } from "@angular/forms";
   styleUrls: ["./app.component.css"],
 })
 export class AppComponent {
+  defaultQuestion = "pet";
+
   // the form 'data' is being stored in 'signupForm'
   @ViewChild("data") signupForm: NgForm;
 
