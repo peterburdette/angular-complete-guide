@@ -10,6 +10,14 @@ export class AppComponent {
   defaultQuestion = "pet";
   answer: string;
   genders = ["male", "female"];
+  user = {
+    username: "",
+    email: "",
+    secretQuestion: "",
+    answer: "",
+    gender: "",
+  };
+  submitted: boolean = false;
 
   // the form 'data' is being stored in 'signupForm'
   @ViewChild("data") signupForm: NgForm;
@@ -44,5 +52,15 @@ export class AppComponent {
   onSubmit() {
     console.log(this.signupForm);
     console.log(this.signupForm.form.value);
+
+    // assigns the values to the new 'user' property for output on the DOM after the form submission
+    this.user.username = this.signupForm.value.userData.username;
+    this.user.email = this.signupForm.value.userData.email;
+    this.user.secretQuestion = this.signupForm.value.secret;
+    this.user.answer = this.signupForm.value.questionAnswer;
+    this.user.gender = this.signupForm.value.gender;
+
+    // sets the form submitted property to true to show the results
+    this.submitted = true;
   }
 }
