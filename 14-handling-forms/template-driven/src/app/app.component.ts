@@ -16,6 +16,23 @@ export class AppComponent {
 
   suggestUserName() {
     const suggestedName = "Superuser";
+    // solution using setValue() method - this will alter and override all properties and their respective values within the object
+    // this.signupForm.setValue({
+    //   userData: {
+    //     username: suggestedName,
+    //     email: "",
+    //   },
+    //   secret: "pet",
+    //   questionAnswer: "",
+    //   gender: "male",
+    // });
+
+    // solution using the patchValue() method (this method is only available on the 'form' wrapped by ngForm) - this will only alter specific property values within the object
+    this.signupForm.form.patchValue({
+      userData: {
+        username: suggestedName,
+      },
+    });
   }
 
   // solution using onSubmit() with one argument being passed
