@@ -13,18 +13,38 @@
            Upon submitting the form, you should simply print the Value of the Form to the Console.
            Optionally, display it in your template.
       -->
-      <form (ngSubmit)="onSubmit(formData)" #formData>
+
+      <form (ngSubmit)="onSubmit()" #data="ngForm">
         <div class="form-group">
           <label for="email">Email</label>
-          <input class="form-control" type="text" name="email" required />
+          <input
+            id="email"
+            class="form-control"
+            type="email"
+            name="email"
+            email
+            ngModel
+            required
+            #emailField="ngModel"
+          />
+          <span
+            class="help-block"
+            *ngIf="!emailField.valid && emailField.touched"
+            >Please enter a valid email.
+          </span>
         </div>
 
         <div class="form-group">
           <label for="subscriptions">Subscriptions</label>
-          <select class="form-control" name="subscriptions">
+          <select
+            name="subscription"
+            id="subscription"
+            [ngModel]="defaultSub"
+            class="form-control"
+          >
             <option
               *ngFor="let subscription of subscriptions"
-              value="subscription"
+              [value]="subscription"
             >
               {{ subscription }}
             </option>
@@ -33,13 +53,40 @@
 
         <div class="form-group">
           <label for="password">Password</label>
-          <input class="form-control" type="text" name="password" required />
+          <input
+            id="password"
+            class="form-control"
+            type="password"
+            name="password"
+            ngModel
+            required
+            #passwordField="ngModel"
+          />
+          <span
+            class="help-block"
+            *ngIf="!passwordField.valid && passwordField.touched"
+            >Please enter a valid password.
+          </span>
         </div>
 
         <div class="form-group">
-          <button class="btn btn-primary" type="submit">Submit</button>
+          <button
+            class="btn btn-primary"
+            type="submit"
+            [disabled]="!data.valid"
+          >
+            Submit
+          </button>
         </div>
       </form>
     </div>
+  </div>
+
+  <div *ngIf="submitted">
+    <hr />
+    <h3>Subscription Form Information</h3>
+    <p>Email: {{ subscription.email }}</p>
+    <p>Subscription: {{ subscription.subType }}</p>
+    <p>Password: {{ subscription.password }}</p>
   </div>
 </div>
