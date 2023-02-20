@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
       <!-- added the formGroup directive - this tell Angular to use my FormGroup in the app.component.ts file -->
-      <form [formGroup]="signupForm">
+      <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
           <label for="username">Username</label>
           <!-- the formControlName directive tells Angular the name of the control within the formGroup that it connects to -->
