@@ -26,6 +26,15 @@ export class AppComponent implements OnInit {
       'gender': new FormControl('male'),
       'hobbies': new FormArray([]),
     });
+
+    // valueChanges and statusChanges are two hooks/observables that can be listened to or subscribed to if you want to closely watch what happens to the form, individual control or want the app to react to something in particular
+    // this.signupForm.valueChanges.subscribe(
+    //   (value) => console.log(value)
+    // )
+
+    // this.signupForm.statusChanges.subscribe(
+    //   (status) => console.log(status)
+    // )
   }
 
   onSubmit() {
