@@ -3,25 +3,27 @@
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
       <!-- added the formGroup directive - this tell Angular to use my FormGroup in the app.component.ts file -->
       <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
-        <div class="form-group">
-          <label for="username">Username</label>
-          <!-- the formControlName directive tells Angular the name of the control within the formGroup that it connects to -->
-          <input
-            type="text"
-            id="username"
-            formControlName="username"
-            class="form-control">
-            <!-- the *ngIf is checking the signUp FormGroup and the get() method takes the control name that is to be retrieved. The .valid checks to see if the control is valid -->
-            <span *ngIf="!signupForm.get('username').valid && signupForm.get('username').touched" class="help-block">Please enter a valid username.</span>
-        </div>
-        <div class="form-group">
-          <label for="email">email</label>
-          <input
-            type="text"
-            id="email"
-            formControlName="email"
-            class="form-control">
-            <span *ngIf="!signupForm.get('email').valid && signupForm.get('email').touched" class="help-block">Please enter a valid email.</span>
+        <div formGroupName="userData">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <!-- the formControlName directive tells Angular the name of the control within the formGroup that it connects to -->
+            <input
+              type="text"
+              id="username"
+              formControlName="username"
+              class="form-control">
+              <!-- the *ngIf is checking the signUp FormGroup and the get() method takes the control name that is to be retrieved. The .valid checks to see if the control is valid -->
+              <span *ngIf="!signupForm.get('userData.username').valid && signupForm.get('userData.username').touched" class="help-block">Please enter a valid username.</span>
+          </div>
+          <div class="form-group">
+            <label for="email">email</label>
+            <input
+              type="text"
+              id="email"
+              formControlName="email"
+              class="form-control">
+              <span *ngIf="!signupForm.get('userData.email').valid && signupForm.get('userData.email').touched" class="help-block">Please enter a valid email.</span>
+          </div>
         </div>
         <div class="radio" *ngFor="let gender of genders">
           <label>
