@@ -35,10 +35,29 @@ export class AppComponent implements OnInit {
     // this.signupForm.statusChanges.subscribe(
     //   (status) => console.log(status)
     // )
+
+    // setValue will update the entire form
+    // this.signupForm.setValue({
+    //   'userData': {
+    //     'username': 'Peter',
+    //     'email': 'peter@test.com'
+    //   },
+    //   'gender': 'male',
+    //   'hobbies': []
+    // })
+    
+    // patchValue will update only specified parts of the form
+    this.signupForm.patchValue({
+      'userData': {
+        'username': 'Joe',
+      }
+    })
   }
 
   onSubmit() {
     console.log(this.signupForm);
+    // reset will reset the form - an object with a gender will cause the form to reset with a predefined state for the gender control
+    this.signupForm.reset({ 'gender': 'male' });
   }
 
   onAddHobby() {
